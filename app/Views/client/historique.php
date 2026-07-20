@@ -28,20 +28,36 @@
                 <th>Frais</th>
                 <th>Solde avant</th>
                 <th>Solde après</th>
-                <th>Destinataire</th>
+                <th>Détails</th>
                 <th>Date</th>
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($operations as $op) : ?>
+              <?php
+                $isReception = isset($op['description']) && strpos($op['description'], 'Réception de') === 0;
+              ?>
                 <tr>
                   <td class="td-muted"><?= (int) $op['id'] ?></td>
-                  <td><span class="badge-type"><?= esc($op['type_libelle']) ?></span></td>
+                  <td>
+                    <?php if ($isReception) : ?>
+                      <span class="badge-type badge-reception"><i class="bi bi-arrow-down-circle-fill"></i> Réception</span>
+                    <?php else : ?>
+                      <span class="badge-type"><?= esc($op['type_libelle']) ?></span>
+                    <?php endif; ?>
+                  </td>
                   <td class="td-montant"><?= number_format((float) $op['montant'], 0, ',', ' ') ?> Ar</td>
                   <td class="td-muted"><?= number_format((float) $op['frais'], 0, ',', ' ') ?> Ar</td>
                   <td class="td-muted"><?= number_format((float) $op['solde_avant'], 0, ',', ' ') ?> Ar</td>
                   <td><?= number_format((float) $op['solde_apres'], 0, ',', ' ') ?> Ar</td>
-                  <td class="td-muted"><?= $op['destinataire'] ? esc($op['destinataire']) : '—' ?></td>
+                  <td class="td-muted">
+                    <?php if ($isReception) : ?>
+                      <span class="reception-label">De&nbsp;<?= esc($op['destinataire']) ?></span>
+                    <?php elseif ($op['destinataire']) : ?>
+                      → <?= esc($op['destinataire']) ?>
+                    <?php else : ?>
+                      —
+                    <?php endif; ?>
+                  </td>
                   <td class="td-muted"><?= esc($op['created_at']) ?></td>
                 </tr>
               <?php endforeach; ?>

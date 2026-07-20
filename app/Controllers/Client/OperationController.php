@@ -101,7 +101,24 @@ class OperationController extends BaseController
             $soldeApres = $soldeAvant - $montant - $frais;
 
             $clientDest = $clientModel->trouverOuCreer($destinataire);
-            $clientModel->mettreAJourSolde((int) $clientDest['id'], (float) $clientDest['solde'] + $montant);
+            $soldeDestAvant = (float) $clientDest['solde'];
+            $soldeDestApres = $soldeDestAvant + $montant;
+            $clientModel->mettreAJourSolde((int) $clientDest['id'], $soldeDestApres);
+
+            // Enregistrer la réception dans l'historique du destinataire
+            $typeTransfert = $typeModel->findByCode('transfert');
+            $operationModelDest = new OperationModel();
+            $operationModelDest->insert([
+                'client_id'         => (int) $clientDest['id'],
+                'type_operation_id' => (int) $typeTransfert['id'],
+                'montant'           => $montant,
+                'frais'             => 0,
+                'solde_avant'       => $soldeDestAvant,
+                'solde_apres'       => $soldeDestApres,
+                'destinataire'      => $client['telephone'],
+                'description'       => 'Réception de ' . $client['telephone'] . ' — ' . number_format($montant, 0, ',', ' ') . ' Ar',
+                'created_at'        => date('Y-m-d H:i:s'),
+            ]);
 
         } else {
             return redirect()->back()->with('error', 'Type d\'opération non reconnu.');
