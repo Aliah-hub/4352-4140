@@ -51,7 +51,7 @@ class AuthController extends BaseController
     {
         session()->set([
             'operateur_id'  => 1,
-            'operateur_nom' => 'Yas',
+            'operateur_nom' => 'Opérateur',
         ]);
 
         return redirect()->to('/operateur/dashboard')->with('success', 'Bienvenue sur le tableau de bord Administrateur !');

@@ -3,7 +3,7 @@
 <div class="auth-page">
   <div class="auth-card">
     <div class="auth-logo">Mobi<span>Pay</span></div>
-    <p class="auth-subtitle">Système Mobile Money — Madagascar</p>
+    <p class="auth-subtitle">Système Mobile Money</p>
 
     <?= view('layout/flash') ?>
 

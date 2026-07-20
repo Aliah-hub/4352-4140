@@ -1,7 +1,7 @@
 <?php
 $nav = isset($active) ? $active : '';
-$initiale = 'Y';
-$displayNom = 'Yas';
+$initiale = 'O';
+$displayNom = 'Opérateur';
 ?>
 <aside class="sidebar">
   <div class="sidebar-logo">Opéra<span>teur</span></div>
