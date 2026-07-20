@@ -9,7 +9,7 @@ class OperateurModel extends Model
     protected $table      = 'operateur';
     protected $primaryKey = 'id';
     protected $returnType = 'array';
-    protected $allowedFields = ['nom', 'password', 'created_at'];
+    protected $allowedFields = ['nom', 'created_at'];
 
     public function findFirst()
     {

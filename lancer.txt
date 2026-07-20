@@ -17,3 +17,5 @@ COMPTE ADMIN DE TEST :
 
 - sqlite3
 - .open FILENAME" to reopen on a persistent database.
+
+

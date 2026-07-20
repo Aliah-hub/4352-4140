@@ -7,12 +7,21 @@ DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS baremes;
 DROP TABLE IF EXISTS type_operations;
 DROP TABLE IF EXISTS prefixes;
+DROP TABLE IF EXISTS config;
+
+CREATE TABLE config (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cle VARCHAR(100) NOT NULL UNIQUE,
+    valeur VARCHAR(255) NOT NULL,
+    description TEXT
+);
+
+INSERT INTO config (cle, valeur, description) VALUES ('commission_transfert_externe', '10', 'Pourcentage de commission en plus pour les transferts vers les autres opérateurs (%)');
 
 
 CREATE TABLE operateur (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nom VARCHAR(100) NOT NULL,
-    password VARCHAR(255) NOT NULL,
     created_at TEXT
 );
 
@@ -43,7 +52,6 @@ CREATE TABLE baremes (
 CREATE TABLE clients (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     telephone VARCHAR(20) NOT NULL,
-    nom VARCHAR(100),
     solde REAL DEFAULT 0,
     actif INTEGER DEFAULT 1,
     created_at TEXT
@@ -69,7 +77,6 @@ SELECT
     o.id,
     o.client_id,
     c.telephone AS client_telephone,
-    c.nom AS client_nom,
     o.type_operation_id,
     t.code AS type_code,
     t.libelle AS type_libelle,
@@ -84,9 +91,9 @@ FROM operations o
 JOIN clients c ON o.client_id = c.id
 JOIN type_operations t ON o.type_operation_id = t.id;
 
--- Mot de passe en clair pour "admin123"
-INSERT INTO operateur (nom, password, created_at) VALUES 
-('Opérateur', 'admin123', datetime('now'));
+
+INSERT INTO operateur (nom, created_at) VALUES 
+('Yas', datetime('now'));
 
 INSERT INTO prefixes (valeur, actif, created_at) VALUES 
 ('032', 1, datetime('now')),
@@ -103,13 +110,11 @@ INSERT INTO prefixes (valeur, actif, created_at) VALUES
 ('0208', 1, datetime('now')),
 ('0209', 1, datetime('now'));
 
--- Insertion des types d'opérations
 INSERT INTO type_operations (id, code, libelle, actif) VALUES 
 (1, 'depot', 'Dépôt', 1),
 (2, 'retrait', 'Retrait', 1),
 (3, 'transfert', 'Transfert', 1);
 
--- Insertion des barèmes pour chaque opérateur
 INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Yas', 2, 100, 1000, 100);
 INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Yas', 2, 1001, 5000, 150);
 INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Yas', 2, 5001, 10000, 275);
@@ -136,67 +141,24 @@ INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max,
 INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Yas', 3, 500001, 1000000, 3200);
 INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Yas', 3, 1000001, 2000000, 3800);
 INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Yas', 3, 2000001, 20000000, 5000);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 0, 100000, 700);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 0, 100000, 700);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 100001, 150000, 1050);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 100001, 150000, 1050);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 150001, 200000, 1400);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 150001, 200000, 1400);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 200001, 250000, 1750);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 200001, 250000, 1750);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 250001, 300000, 2100);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 250001, 300000, 2100);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 300001, 400000, 2800);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 300001, 400000, 2800);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 400001, 500000, 3500);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 400001, 500000, 3500);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 500001, 750000, 5250);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 500001, 750000, 5250);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 750001, 1000000, 7000);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 750001, 1000000, 7000);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 1000001, 1500000, 10500);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 1000001, 1500000, 10500);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 2, 1500001, 2000000, 14000);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Orange', 3, 1500001, 2000000, 14000);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 0, 1000, 100);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 0, 1000, 50);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 1001, 5000, 150);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 1001, 5000, 50);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 5001, 10000, 275);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 5001, 10000, 100);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 10001, 20000, 550);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 10001, 20000, 200);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 20001, 25000, 650);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 20001, 25000, 300);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 25001, 30000, 1300);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 25001, 30000, 300);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 30001, 40000, 1300);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 30001, 40000, 400);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 40001, 50000, 1300);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 40001, 50000, 600);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 50001, 60000, 1900);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 50001, 60000, 600);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 60001, 80000, 1900);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 60001, 80000, 800);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 80001, 100000, 1900);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 80001, 100000, 800);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 100001, 150000, 3400);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 100001, 150000, 1500);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 150001, 250000, 3400);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 150001, 250000, 1500);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 250001, 500000, 4700);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 250001, 500000, 1500);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 500001, 1000000, 8800);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 500001, 1000000, 2500);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 1000001, 2000000, 14700);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 1000001, 2000000, 3000);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 2, 2000001, 3000000, 19600);
-INSERT INTO baremes (operateur_nom, type_operation_id, montant_min, montant_max, frais) VALUES ('Airtel', 3, 2000001, 3000000, 3000);
 
 
 
-INSERT INTO clients (telephone, nom, solde, actif, created_at) VALUES 
-('0321234567', 'Alice', 150000, 1, datetime('now')),
-('0331234567', 'Bob', 80000, 1, datetime('now'));
+
+INSERT INTO clients (id, telephone, solde, actif, created_at) VALUES 
+(1, '0321234567', 150000, 1, datetime('now')),
+(2, '0331234567', 80000, 1, datetime('now')),
+(3, '0341234567', 250000, 1, datetime('now')),
+(4, '0329876543', 50000, 1, datetime('now')),
+(5, '0339876543', 120000, 1, datetime('now')),
+(6, '0349876543', 300000, 1, datetime('now'));
+
+INSERT INTO operations (client_id, type_operation_id, montant, frais, solde_avant, solde_apres, destinataire, description, created_at) VALUES
+(1, 1, 50000, 0, 80000, 130000, NULL, 'Depot de 50 000 Ar', datetime('now', '-2 days')),
+(2, 2, 20000, 550, 100550, 80000, NULL, 'Retrait de 20 000 Ar', datetime('now', '-1 day')),
+(3, 3, 50000, 500, 322750, 272250, '0349876543', 'Transfert vers 0349876543', datetime('now', '-5 hours')),
+(6, 3, 50000, 0, 250000, 300000, '0341234567', 'Réception de 0341234567 — 50 000 Ar', datetime('now', '-5 hours')),
+(3, 3, 20000, 2250, 272250, 250000, '0321234567', 'Transfert vers 0321234567 (Inter-opérateur)', datetime('now', '-2 hours')),
+(1, 3, 20000, 0, 130000, 150000, '0341234567', 'Réception de 0341234567 — 20 000 Ar', datetime('now', '-2 hours'));
 
 PRAGMA foreign_keys = ON;

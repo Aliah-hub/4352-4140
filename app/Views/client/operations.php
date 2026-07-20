@@ -22,6 +22,7 @@
               <?php foreach ($types as $t) : ?>
                 <label class="type-choice">
                   <input type="radio" name="type_code" value="<?= esc($t['code']) ?>"
+                         <?= $typeParam === $t['code'] ? 'checked' : '' ?>
                          onchange="onTypeChange('<?= esc($t['code']) ?>')" required />
                   <span>
                     <?php if ($t['code'] === 'depot') : ?>
@@ -45,9 +46,14 @@
           </div>
 
           <div class="form-group d-none" id="groupe-destinataire">
-            <label>Numéro du destinataire</label>
+            <label>Numéro(s) du destinataire (séparés par une virgule pour envoi multiple)</label>
             <input type="text" name="destinataire" id="destinataire"
-                   placeholder="ex: 0341234567" class="form-control" />
+                   placeholder="ex: 0341234567, 0329876543" class="form-control" />
+          </div>
+
+          <div class="form-group d-none" id="groupe-frais-retrait" style="flex-direction: row; align-items: center; gap: 10px;">
+            <input type="checkbox" name="inclure_frais_retrait" id="inclure_frais_retrait" value="1" style="width: 20px; height: 20px;" />
+            <label for="inclure_frais_retrait" style="margin-bottom: 0; text-transform: none; color: var(--text-main);">Inclure les frais de retrait (le montant sera augmenté pour couvrir les frais de retrait du destinataire)</label>
           </div>
 
           <button type="submit" class="btn-primary-custom">Confirmer l'opération</button>
@@ -60,17 +66,30 @@
 
 <script>
 function onTypeChange(code) {
-  var div = document.getElementById('groupe-destinataire');
+  var divDest = document.getElementById('groupe-destinataire');
+  var divFrais = document.getElementById('groupe-frais-retrait');
   var input = document.getElementById('destinataire');
+  var checkbox = document.getElementById('inclure_frais_retrait');
+
   if (code === 'transfert') {
-    div.classList.remove('d-none');
+    divDest.classList.remove('d-none');
+    divFrais.classList.remove('d-none');
     input.required = true;
   } else {
-    div.classList.add('d-none');
+    divDest.classList.add('d-none');
+    divFrais.classList.add('d-none');
     input.required = false;
     input.value = '';
+    checkbox.checked = false;
   }
 }
+
+window.addEventListener('DOMContentLoaded', function() {
+  var checkedRadio = document.querySelector('input[name="type_code"]:checked');
+  if (checkedRadio) {
+    onTypeChange(checkedRadio.value);
+  }
+});
 </script>
 
 <?= view('layout/footer') ?>

@@ -7,6 +7,8 @@
     </div>
     <div class="page-content">
       <?= view('layout/flash') ?>
+      
+
 
       <div class="metrics-row">
         <div class="metric-card">

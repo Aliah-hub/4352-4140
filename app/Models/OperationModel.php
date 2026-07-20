@@ -39,7 +39,7 @@ class OperationModel extends Model
 
     public function getToutesAvecDetails()
     {
-        return $this->select('operations.*, type_operations.libelle AS type_libelle, clients.telephone AS client_telephone')
+        return $this->select('operations.*, type_operations.libelle AS type_libelle, type_operations.code AS type_code, clients.telephone AS client_telephone')
                     ->join('type_operations', 'type_operations.id = operations.type_operation_id')
                     ->join('clients', 'clients.id = operations.client_id')
                     ->orderBy('operations.id', 'DESC')

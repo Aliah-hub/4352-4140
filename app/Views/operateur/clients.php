@@ -8,20 +8,21 @@
     <div class="page-content">
       <?= view('layout/flash') ?>
 
+
+
       <div class="data-card">
         <?php if (empty($clients)) : ?>
-          <div class="empty-state"><i class="bi bi-people"></i><p>Aucun client enregistré.</p></div>
+          <div class="empty-state"><i class="bi bi-people"></i><p>Aucun client enregistre.</p></div>
         <?php else : ?>
           <table class="table-custom">
             <thead>
-              <tr><th>#</th><th>Téléphone</th><th>Nom</th><th>Solde</th><th>Statut</th><th>Créé le</th><th>Détail</th></tr>
+              <tr><th>#</th><th>Telephone</th><th>Solde</th><th>Statut</th><th>Cree le</th><th>Detail</th></tr>
             </thead>
             <tbody>
               <?php foreach ($clients as $c) : ?>
                 <tr>
                   <td class="td-muted"><?= (int) $c['id'] ?></td>
                   <td class="td-name"><?= esc($c['telephone']) ?></td>
-                  <td class="td-muted"><?= $c['nom'] ? esc($c['nom']) : '—' ?></td>
                   <td class="td-montant"><?= number_format((float) $c['solde'], 0, ',', ' ') ?> Ar</td>
                   <td>
                     <?php if ($c['actif']) : ?>

@@ -33,9 +33,10 @@
               </tr>
             </thead>
             <tbody>
-              <?php
-                $isReception = isset($op['description']) && strpos($op['description'], 'Réception de') === 0;
-              ?>
+              <?php foreach ($operations as $op) : ?>
+                <?php
+                  $isReception = isset($op['description']) && strpos($op['description'], 'Réception de') === 0;
+                ?>
                 <tr>
                   <td class="td-muted"><?= (int) $op['id'] ?></td>
                   <td>

@@ -15,14 +15,12 @@ class TypeOperationController extends BaseController
 
         $types = $typeModel->findAll();
 
-        $operateur_nom = session()->get('operateur_nom');
-
         foreach ($types as $i => $t) {
-            $types[$i]['baremes'] = $baremeModel->getPourType((int) $t['id'], $operateur_nom);
+            $types[$i]['baremes'] = $baremeModel->getPourType((int) $t['id'], 'Yas');
         }
 
         return view('operateur/type_operations', [
-            'types' => $types,
+            'types'  => $types,
         ]);
     }
 
@@ -61,8 +59,7 @@ class TypeOperationController extends BaseController
         $baremeModel = new BaremeModel();
 
         $type    = $typeModel->find($typeId);
-        $operateur_nom = session()->get('operateur_nom');
-        $baremes = $baremeModel->getPourType($typeId, $operateur_nom);
+        $baremes = $baremeModel->getPourType($typeId, 'Yas');
 
         if ($type === null) {
             return redirect()->back()->with('error', 'Type introuvable.');
@@ -84,11 +81,9 @@ class TypeOperationController extends BaseController
             return redirect()->back()->with('error', 'Valeurs invalides.');
         }
 
-        $operateur_nom = session()->get('operateur_nom');
-
         $baremeModel = new BaremeModel();
         $baremeModel->insert([
-            'operateur_nom'     => $operateur_nom,
+            'operateur_nom'     => 'Yas',
             'type_operation_id' => $typeId,
             'montant_min'       => $montantMin,
             'montant_max'       => $montantMax,

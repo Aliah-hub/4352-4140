@@ -37,6 +37,9 @@ $routes->group('operateur', ['filter' => 'admin'], static function ($routes) {
 
     $routes->get('gains',             'Operateur\GainController::index');
 
+    $routes->get('config',            'Operateur\ConfigController::index');
+    $routes->post('config/update',    'Operateur\ConfigController::update');
+
     $routes->get('clients',           'Operateur\ClientsController::index');
     $routes->get('clients/(:num)',    'Operateur\ClientsController::show/$1');
 });

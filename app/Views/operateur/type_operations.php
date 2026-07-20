@@ -8,6 +8,8 @@
     <div class="page-content">
       <?= view('layout/flash') ?>
 
+
+
       <div class="data-card">
         <div class="data-card-header"><h3>Ajouter un type d'operation</h3></div>
         <form action="<?= base_url('operateur/type-operations/store') ?>" method="post" class="form-inline-row">
@@ -24,7 +26,7 @@
             <h3><?= esc($t['libelle']) ?> <small class="td-muted">(<?= esc($t['code']) ?>)</small></h3>
             <div>
               <a href="<?= base_url('operateur/type-operations/' . (int) $t['id'] . '/baremes') ?>"
-                 class="btn-secondary-custom"><i class="bi bi-table"></i> Gerer les baremes</a>
+                 class="btn-secondary-custom"><i class="bi bi-table"></i> Gérer les barèmes</a>
               <form action="<?= base_url('operateur/type-operations/delete/' . (int) $t['id']) ?>" method="post"
                     class="d-inline" onsubmit="return confirm('Supprimer ce type ?')">
                 <?= csrf_field() ?>
@@ -34,13 +36,16 @@
           </div>
 
           <?php if (empty($t['baremes'])) : ?>
-            <p class="td-muted p-12">Aucun barème. <a href="<?= base_url('operateur/type-operations/' . (int) $t['id'] . '/baremes') ?>">Ajouter des tranches →</a></p>
+            <p class="td-muted" style="padding: 16px 24px; font-size: 0.9rem;">Aucun barème configuré pour ce type d'opération.</p>
           <?php else : ?>
             <table class="table-custom">
-              <thead><tr><th>Montant min</th><th>Montant max</th><th>Frais (Ar)</th></tr></thead>
+              <thead><tr>
+                <th>Montant min</th><th>Montant max</th><th>Frais (Ar)</th>
+              </tr></thead>
               <tbody>
                 <?php foreach ($t['baremes'] as $b) : ?>
                   <tr>
+
                     <td><?= number_format((float) $b['montant_min'], 0, ',', ' ') ?> Ar</td>
                     <td><?= number_format((float) $b['montant_max'], 0, ',', ' ') ?> Ar</td>
                     <td><strong><?= number_format((float) $b['frais'], 0, ',', ' ') ?> Ar</strong></td>

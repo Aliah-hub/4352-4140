@@ -16,7 +16,6 @@
       </button>
     </div>
 
-    <!-- Formulaire client : numéro de téléphone -->
     <div id="form-client">
       <form action="<?= base_url('login/client') ?>" method="post">
         <?= csrf_field() ?>
@@ -35,42 +34,10 @@
     <div id="form-operateur" class="d-none">
       <form action="<?= base_url('login/operateur') ?>" method="post" id="form-op">
         <?= csrf_field() ?>
-        <input type="hidden" name="operateur_nom" id="operateur_nom_hidden" value="" />
+        
+        <p style="color: var(--muted); text-align: center; margin-bottom: 20px;">Accès direct pour l'administrateur</p>
 
-        <div class="form-group">
-          <label>Choisir l'opérateur</label>
-
-          <div class="custom-select-wrapper">
-            <div class="custom-select-trigger" id="custom-trigger">
-              <span class="trigger-placeholder">-- Sélectionner un opérateur --</span>
-            </div>
-            <div class="custom-select-options" id="custom-options">
-              <div class="custom-option" data-value="Airtel" onclick="selectOperateur(this)">
-                <img src="<?= base_url('images/airtel.jpeg') ?>" alt="Airtel" />
-                <div class="op-info">
-                  <span class="op-name">Airtel Money</span>
-                  <span class="op-prefix">se connecter à Airtel</span>
-                </div>
-              </div>
-              <div class="custom-option" data-value="Orange" onclick="selectOperateur(this)">
-                <img src="<?= base_url('images/orange.jpeg') ?>" alt="Orange" />
-                <div class="op-info">
-                  <span class="op-name">Orange Money</span>
-                  <span class="op-prefix">se connecter à Orange</span>
-                </div>
-              </div>
-              <div class="custom-option" data-value="Yas" onclick="selectOperateur(this)">
-                <img src="<?= base_url('images/yas.jpeg') ?>" alt="Yas" />
-                <div class="op-info">
-                  <span class="op-name">Yas / MVola</span>
-                  <span class="op-prefix">se connecter à Yas</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button type="submit" class="btn-primary-custom" id="btn-op" disabled>Accéder au tableau de bord</button>
+        <button type="submit" class="btn-primary-custom" style="width: 100%;">Accéder au tableau de bord</button>
       </form>
     </div>
   </div>
@@ -95,39 +62,6 @@ function showTab(tab) {
   document.getElementById('tab-operateur').classList.toggle('active', tab === 'operateur');
 }
 
-document.getElementById('custom-trigger').addEventListener('click', function() {
-  var opts = document.getElementById('custom-options');
-  opts.classList.toggle('open');
-  this.classList.toggle('open');
-});
-
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.custom-select-wrapper')) {
-    document.getElementById('custom-options').classList.remove('open');
-    document.getElementById('custom-trigger').classList.remove('open');
-  }
-});
-
-function selectOperateur(el) {
-  var value  = el.getAttribute('data-value');
-  var img    = el.querySelector('img').src;
-  var name   = el.querySelector('.op-name').textContent;
-  var prefix = el.querySelector('.op-prefix').textContent;
-
-  document.getElementById('operateur_nom_hidden').value = value;
-
-  var trigger = document.getElementById('custom-trigger');
-  trigger.innerHTML =
-    '<img src="' + img + '" alt="' + value + '" class="custom-trigger-img" />' +
-    '<div class="custom-trigger-info">' +
-      '<span class="trigger-name">' + name + '</span>' +
-      '<span class="trigger-prefix">' + prefix + '</span>' +
-    '</div>';
-
-  document.getElementById('custom-options').classList.remove('open');
-  trigger.classList.remove('open');
-  document.getElementById('btn-op').disabled = false;
-}
 </script>
 
 <?= view('layout/footer') ?>

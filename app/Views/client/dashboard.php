@@ -15,15 +15,15 @@
       </div>
 
       <div class="actions-rapides">
-        <a href="<?= base_url('client/operations') ?>" class="action-card depot">
+        <a href="<?= base_url('client/operations') ?>?type=depot" class="action-card depot">
           <i class="bi bi-arrow-down-circle"></i>
           <span>Dépôt</span>
         </a>
-        <a href="<?= base_url('client/operations') ?>" class="action-card retrait">
+        <a href="<?= base_url('client/operations') ?>?type=retrait" class="action-card retrait">
           <i class="bi bi-arrow-up-circle"></i>
           <span>Retrait</span>
         </a>
-        <a href="<?= base_url('client/operations') ?>" class="action-card transfert">
+        <a href="<?= base_url('client/operations') ?>?type=transfert" class="action-card transfert">
           <i class="bi bi-send"></i>
           <span>Transfert</span>
         </a>

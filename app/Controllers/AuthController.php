@@ -24,25 +24,24 @@ class AuthController extends BaseController
         $telephone = trim((string) $this->request->getPost('telephone'));
 
         if ($telephone === '') {
-            return redirect()->back()->with('error', 'Veuillez entrer votre numéro de téléphone.');
+            return redirect()->back()->with('error', 'Veuillez entrer votre numero de telephone.');
         }
 
         $prefixeModel = new PrefixeModel();
         if (! $prefixeModel->estValide($telephone)) {
-            return redirect()->back()->with('error', 'Numéro de téléphone non valide pour cet opérateur.');
+            return redirect()->back()->with('error', 'Numero de telephone non valide pour cet operateur.');
         }
 
         $clientModel = new ClientModel();
         $client = $clientModel->trouverOuCreer($telephone);
 
         if ((int) $client['actif'] === 0) {
-            return redirect()->back()->with('error', 'Votre compte est désactivé.');
+            return redirect()->back()->with('error', 'Votre compte est desactive.');
         }
 
         session()->set([
             'client_id'        => $client['id'],
             'client_telephone' => $client['telephone'],
-            'client_nom'       => $client['nom'],
         ]);
 
         return redirect()->to('/client/dashboard')->with('success', 'Bienvenue !');
@@ -50,26 +49,17 @@ class AuthController extends BaseController
 
     public function loginOperateur()
     {
-        $operateur_nom = trim((string) $this->request->getPost('operateur_nom'));
-
-        $operateurs_valides = ['Airtel', 'Orange', 'Yas'];
-
-        if (! in_array($operateur_nom, $operateurs_valides)) {
-            return redirect()->back()->with('error', 'Veuillez sélectionner un opérateur valide.');
-        }
-
         session()->set([
             'operateur_id'  => 1,
-            'operateur_nom' => $operateur_nom,
+            'operateur_nom' => 'Yas',
         ]);
 
-        return redirect()->to('/operateur/dashboard')->with('success', 'Bienvenue ' . $operateur_nom . ' !');
+        return redirect()->to('/operateur/dashboard')->with('success', 'Bienvenue sur le tableau de bord Administrateur !');
     }
 
-    // Déconnexion
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/login')->with('success', 'Vous êtes déconnecté.');
+        return redirect()->to('/login')->with('success', 'Vous êtes deconnecte.');
     }
 }

@@ -9,7 +9,7 @@ class ClientModel extends Model
     protected $table      = 'clients';
     protected $primaryKey = 'id';
     protected $returnType = 'array';
-    protected $allowedFields = ['telephone', 'nom', 'solde', 'actif', 'created_at'];
+    protected $allowedFields = ['telephone', 'solde', 'actif', 'created_at'];
 
     public function findByTelephone(string $telephone)
     {

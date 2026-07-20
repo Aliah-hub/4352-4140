@@ -1,42 +1,32 @@
-CRITICAL - 2026-07-20 07:03:53 --> ErrorException: Trying to access array offset on null
-[Method: GET, Route: client/dashboard]
-in APPPATH/Views/client/dashboard.php on line 14.
- 1 APPPATH/Views/client/dashboard.php(14): CodeIgniter\Debug\Exceptions->errorHandler()
- 2 SYSTEMPATH/View/View.php(240): include('/home/aliah/Documents/MOBILE MONEY EXAMEN FINAL S4/4352-4140/app/Views/client/dashboard.php')
- 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
- 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
- 5 APPPATH/Controllers/Client/DashboardController.php(24): view()
- 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Client\DashboardController->index()
- 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
- 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
- 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
-10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
-11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
-CRITICAL - 2026-07-20 07:03:54 --> ErrorException: Trying to access array offset on null
-[Method: GET, Route: client/dashboard]
-in APPPATH/Views/client/dashboard.php on line 14.
- 1 APPPATH/Views/client/dashboard.php(14): CodeIgniter\Debug\Exceptions->errorHandler()
- 2 SYSTEMPATH/View/View.php(240): include('/home/aliah/Documents/MOBILE MONEY EXAMEN FINAL S4/4352-4140/app/Views/client/dashboard.php')
- 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
- 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
- 5 APPPATH/Controllers/Client/DashboardController.php(24): view()
- 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Client\DashboardController->index()
- 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
- 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
- 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
-10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
-11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
-CRITICAL - 2026-07-20 07:03:59 --> ErrorException: Trying to access array offset on null
-[Method: GET, Route: client/dashboard]
-in APPPATH/Views/client/dashboard.php on line 14.
- 1 APPPATH/Views/client/dashboard.php(14): CodeIgniter\Debug\Exceptions->errorHandler()
- 2 SYSTEMPATH/View/View.php(240): include('/home/aliah/Documents/MOBILE MONEY EXAMEN FINAL S4/4352-4140/app/Views/client/dashboard.php')
- 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
- 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
- 5 APPPATH/Controllers/Client/DashboardController.php(24): view()
- 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Client\DashboardController->index()
- 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
- 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
- 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
-10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
-11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-07-20 11:56:10 --> ErrorException: Undefined array key "type_code"
+[Method: GET, Route: operateur/gains]
+in APPPATH/Controllers/Operateur/GainController.php on line 33.
+ 1 APPPATH/Controllers/Operateur/GainController.php(33): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Operateur\GainController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-07-20 11:57:18 --> ErrorException: Undefined array key "type_code"
+[Method: GET, Route: operateur/gains]
+in APPPATH/Controllers/Operateur/GainController.php on line 33.
+ 1 APPPATH/Controllers/Operateur/GainController.php(33): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Operateur\GainController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-07-20 12:54:42 --> ParseError: syntax error, unexpected token "endforeach"
+[Method: GET, Route: client/historique]
+in APPPATH/Views/client/historique.php on line 63.
+ 1 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Client/OperationController.php(234): view()
+ 4 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Client\OperationController->historique()
+ 5 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()

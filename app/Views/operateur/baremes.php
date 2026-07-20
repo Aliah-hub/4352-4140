@@ -12,10 +12,13 @@
         ← Retour aux types
       </a>
 
+
+
       <div class="data-card">
         <div class="data-card-header"><h3>Ajouter une tranche de frais</h3></div>
         <form action="<?= base_url('operateur/type-operations/' . (int) $type['id'] . '/baremes/store') ?>" method="post" class="form-inline-row">
           <?= csrf_field() ?>
+
           <div class="form-group">
             <label>Montant min (Ar)</label>
             <input type="number" name="montant_min" min="0" step="1" placeholder="ex: 100" class="form-control" required />
@@ -39,13 +42,16 @@
         <?php else : ?>
           <table class="table-custom">
             <thead>
-              <tr><th>Montant min</th><th>Montant max</th><th>Frais</th><th>Modifier</th><th>Supprimer</th></tr>
+              <tr>
+                <th>Montant min</th><th>Montant max</th><th>Frais</th><th>Modifier</th><th>Supprimer</th>
+              </tr>
             </thead>
             <tbody>
               <?php foreach ($baremes as $b) : ?>
                 <tr>
                   <form action="<?= base_url('operateur/type-operations/' . (int) $type['id'] . '/baremes/update/' . (int) $b['id']) ?>" method="post">
                     <?= csrf_field() ?>
+
                     <td><input type="number" name="montant_min" value="<?= (float) $b['montant_min'] ?>" class="form-control-sm w-110" /></td>
                     <td><input type="number" name="montant_max" value="<?= (float) $b['montant_max'] ?>" class="form-control-sm w-110" /></td>
                     <td><input type="number" name="frais"       value="<?= (float) $b['frais'] ?>"       class="form-control-sm w-90" /></td>
