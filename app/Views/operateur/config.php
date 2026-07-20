@@ -14,11 +14,11 @@
         </div>
         <div style="padding: 24px;">
           <?php foreach ($configs as $c) : ?>
-            <form action="<?= base_url('operateur/config/update') ?>" method="post" style="display: flex; gap: 16px; align-items: flex-end; margin-bottom: 24px;">
+            <form action="<?= base_url('operateur/config/update') ?>" method="post" style="margin-bottom: 24px;">
               <?= csrf_field() ?>
               <input type="hidden" name="id" value="<?= $c['id'] ?>">
               
-              <div class="form-group" style="flex: 1; margin-bottom: 0;">
+              <div class="form-group" style="margin-bottom: 16px;">
                 <label><?= esc($c['description']) ?></label>
                 <input type="text" name="valeur" value="<?= esc($c['valeur']) ?>" class="form-control" required>
               </div>
