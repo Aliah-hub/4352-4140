@@ -1,0 +1,19 @@
+
+1) php spark migrate
+   -> crée writable/fitspace.db et les 4 tables
+
+2) php spark db:seed FitspaceSeeder
+   -> insère le compte admin + données de test
+
+3) cd public && php -S localhost:8080
+   -> démarre le serveur sur http://localhost:8080
+
+REMETTRE A ZERO :
+- supprimer writable/fitspace.db puis relancer les 2 premières commandes.
+
+COMPTE ADMIN DE TEST :
+- email    : admin@fitspace.mg
+- password : admin123
+
+- sqlite3
+- .open FILENAME" to reopen on a persistent database.
