@@ -1,7 +1,7 @@
 Phase 1 — Initialisation du projet
 [4352 + 4140] Créer le projet CodeIgniter 4 avec Composer et vérifier que la page d'accueil s'affiche. 
 [4352 + 4140] Mettre en place Git : dépôt local, premier commit, dépôt distant (GitHub). 
-[4352 + 4140] Se répartir les rôles : 4140 → partie Client, 4352 → partie Opérateur/Admin. 
+[4352 + 4140] Se répartir les rôles : 4140 : partie Client, 4352 : partie Opérateur/Admin. 
 
 
 Phase 2 — Base de données
@@ -35,7 +35,7 @@ Phase 4 — Espace Opérateur
 [4352] Affichage des barèmes filtrés : chaque opérateur ne voit que ses propres tranches de frais. 
 [4352] Remplir les vrais barèmes (grilles MVola/Yas, Orange, Airtel) — retrait et transfert. 
 [4352] Page des gains (calcul du total des frais collectés). 
-[4352] Liste des clients filtrée : Yas → 034/038, Orange → 032/037, Airtel → 033/035. 
+[4352] Liste des clients filtrée : Yas : 034/038, Orange : 032/037, Airtel : 033/035. 
 [4352] Page détail d'un client (solde + historique complet). 
 [4352] Logo de l'opérateur affiché dans la navbar selon la session (images airtel.jpeg, orange.jpeg, yas.jpeg). 
 
@@ -53,8 +53,8 @@ Phase 5 — Espace Client
 
 Phase 6 — Qualité & Tests
 [4140 + 4352] Déplacer tout le CSS inline des vues vers le fichier unique public/css/app.css. 
-[4140] Tester tout le parcours client de bout en bout (connexion → dépôt → retrait → transfert → historique → déconnexion).
-[4352] Tester tout le parcours opérateur de bout en bout (connexion → préfixes → types → barèmes → gains → clients).
+[4140] Tester tout le parcours client de bout en bout (connexion : dépôt : retrait : transfert : historique : déconnexion).
+[4352] Tester tout le parcours opérateur de bout en bout (connexion : préfixes : types : barèmes : gains : clients).
 [4140] Tester les cas limites côté client (montant à 0, montant négatif, montant à la limite exacte d'un palier).
 [4352] Tester les cas limites côté opérateur (palier avec un trou, deux paliers qui se chevauchent).
 [4352] Supprimer la base de données, relancer ./lancer.sh, et confirmer que tout redémarre sans erreur.
