@@ -6,11 +6,12 @@
     class EpargneModel extends Model{
         protected $table = 'epargne';
         protected $primaryKey = 'id';
-        protected $returnType = ['id_client ', 'pourcentage', 'solde'];
+    protected $returnType = 'array';
+    protected $allowedFields = ['id_client', 'pourcentage', 'solde'];
 
-        public function getParClient(int $clientId){
-            return $this->where('id_client', $clientId)->frist();
-        }
+    public function getParClient(int $clientId){
+        return $this->where('id_client', $clientId)->first();
+    }
 
         public function mettreAJourSolde(int $clientId, float $nouveauSolde){
             $this->where('id_client', $clientId)->set(['solde'=> $nouveauSolde])->update();

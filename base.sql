@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS baremes;
 DROP TABLE IF EXISTS type_operations;
 DROP TABLE IF EXISTS prefixes;
 DROP TABLE IF EXISTS config;
+DROP TABLE IF EXISTS epargne;
 
 CREATE TABLE config (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,6 +71,14 @@ CREATE TABLE operations (
     created_at TEXT,
     FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE,
     FOREIGN KEY (type_operation_id) REFERENCES type_operations(id) ON DELETE CASCADE
+);
+
+CREATE TABLE epargne(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_client INTEGER,
+    pourcentage INTEGER,
+    solde REAL DEFAULT 0,
+    FOREIGN KEY (id_client) REFERENCES clients(id) ON DELETE CASCADE
 );
 
 CREATE VIEW v_operations_details AS 

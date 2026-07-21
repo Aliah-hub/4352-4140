@@ -16,6 +16,9 @@ $routes->group('client', ['filter' => 'auth'], static function ($routes) {
     $routes->get('operations',        'Client\OperationController::formulaire');
     $routes->post('operations',       'Client\OperationController::effectuer');
     $routes->get('historique',        'Client\OperationController::historique');
+    
+    $routes->get('epargne',              'Client\EpargneController::index');
+    $routes->post('epargne/action',      'Client\EpargneController::action');
 });
 
 $routes->group('operateur', ['filter' => 'admin'], static function ($routes) {

@@ -25,9 +25,13 @@ class DashboardController extends BaseController
 
         $dernieres = array_slice($operations, 0, 5);
 
+        $epargneModel = new \App\Models\EpargneModel();
+        $epargne = $epargneModel->getParClient($clientId);
+
         return view('client/dashboard', [
             'client'    => $client,
             'dernieres' => $dernieres,
+            'epargne'   => $epargne,
         ]);
     }
 }
