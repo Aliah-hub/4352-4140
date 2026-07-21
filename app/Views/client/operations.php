@@ -12,6 +12,8 @@
         Solde actuel : <strong><?= number_format((float) $client['solde'], 0, ',', ' ') ?> Ar</strong>
       </div>
 
+      
+
       <div class="data-card">
         <form action="<?= base_url('client/operations') ?>" method="post" id="form-operation">
           <?= csrf_field() ?>
@@ -54,6 +56,7 @@
           <div class="form-group d-none" id="groupe-frais-retrait" style="flex-direction: row; align-items: center; gap: 10px;">
             <input type="checkbox" name="inclure_frais_retrait" id="inclure_frais_retrait" value="1" style="width: 20px; height: 20px;" />
             <label for="inclure_frais_retrait" style="margin-bottom: 0; text-transform: none; color: var(--text-main);">Inclure les frais de retrait (le montant sera augmente pour couvrir les frais de retrait du destinataire)</label>
+             <input type="checkbox" name="inclure_frais_retrait" id="inclure_frais_retrait" value="1" style="width: 20px; height: 20px;" />
           </div>
 
           <button type="submit" class="btn-primary-custom">Confirmer l'operation</button>

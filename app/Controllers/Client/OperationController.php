@@ -111,10 +111,11 @@ class OperationController extends BaseController
             }
 
             $montant_par_destinataire = floor($montant_initial / count($destinataires));
-            $promo_meme_operateur_pct = (float) ($configModel-> getValeur('promotion_transfert_meme_operateur') ?? 0);
 
             $prefixeModel = new PrefixeModel();
             $configModel = new \App\Models\ConfigModel();
+            $promo_meme_operateur_pct = (float) ($configModel-> getValeur('promotion_transfert_meme_operateur') ?? 0);
+
             $comm_externe_pct = (float) ($configModel->getValeur('commission_transfert_externe') ?? 0);
 
             $frais_total = 0;
@@ -134,13 +135,8 @@ class OperationController extends BaseController
                 if ($dest === $client['telephone']) {
                     return redirect()->back()->with('error', 'Vous ne pouvez pas vous transferer a vous-même.');
                 }
-                
-                if ($is_inter){
-                    $frais_transfert += $montant_recu * ($comm_externe_pct / 100);
-                }elseif ($promo_meme_operateur_pct > 0){
-                    $frais_transfert -= $frais_transfert * ($promo_meme_operateur_pct /100);
-                }
-                
+
+
                 $cleanTelDest = str_replace('+261', '0', $dest);
                 $prefixDest = substr($cleanTelDest, 0, 3);
                 $opDest = 'Yas';
@@ -161,6 +157,8 @@ class OperationController extends BaseController
 
                 if ($is_inter) {
                     $frais_transfert += $montant_recu * ($comm_externe_pct / 100);
+                } elseif ($promo_meme_operateur_pct > 0) {
+                    $frais_transfert -= $frais_transfert * ($promo_meme_operateur_pct / 100);
                 }
                 
                 $frais_total += $frais_transfert;

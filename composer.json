@@ -64,6 +64,12 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "post-install-cmd": [
+            "chmod -R 777 writable/ || true"
+        ],
+        "post-update-cmd": [
+            "chmod -R 777 writable/ || true"
+        ]
     }
 }

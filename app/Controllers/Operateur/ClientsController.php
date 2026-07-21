@@ -35,4 +35,7 @@ class ClientsController extends BaseController
             'operations' => $operations,
         ]);
     }
+    public function updateTauxEpargne(){
+        
+    }
 }
