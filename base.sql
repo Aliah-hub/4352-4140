@@ -161,4 +161,6 @@ INSERT INTO operations (client_id, type_operation_id, montant, frais, solde_avan
 (3, 3, 20000, 2250, 272250, 250000, '0321234567', 'Transfert vers 0321234567 (Inter-opérateur)', datetime('now', '-2 hours')),
 (1, 3, 20000, 0, 130000, 150000, '0341234567', 'Réception de 0341234567 — 20 000 Ar', datetime('now', '-2 hours'));
 
+INSERT INTO config (cle,valeur,description) VALUES ('promotion_transfert_meme_operateur', '10', 'Pourcentage de reduction sur les frais de transfert de meme operateur (%)');
+
 PRAGMA foreign_keys = ON;
