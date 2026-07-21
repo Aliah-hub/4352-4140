@@ -1,13 +1,11 @@
         <script src="<?= base_url('js/chart.js') ?>"></script>
         
-        <!-- Script Responsive Mobile -->
         <script>
         document.addEventListener('DOMContentLoaded', function() {
             var topbar = document.querySelector('.topbar');
             var sidebar = document.querySelector('.sidebar');
             
             if (topbar && sidebar) {
-                // Création du bouton hamburger
                 var toggleBtn = document.createElement('button');
                 toggleBtn.className = 'mobile-toggle';
                 toggleBtn.innerHTML = '<i class="bi bi-list"></i>';
@@ -21,12 +19,10 @@
                     topbar.prepend(toggleBtn);
                 }
                 
-                // Création de l'overlay
                 var overlay = document.createElement('div');
                 overlay.className = 'sidebar-overlay';
                 document.body.appendChild(overlay);
                 
-                // Événements
                 toggleBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     sidebar.classList.toggle('open');
