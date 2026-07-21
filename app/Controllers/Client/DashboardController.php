@@ -18,7 +18,7 @@ class DashboardController extends BaseController
         $client = $clientModel->find($clientId);
 
         if ($client === null) {
-            return redirect()->to('/logout')->with('error', 'Votre session a expiré ou le compte a été supprimé.');
+            return redirect()->to('/logout')->with('error', 'Votre session a expire ou le compte a ete supprime.');
         }
 
         $operations = $operationModel->getHistoriqueClient($clientId);

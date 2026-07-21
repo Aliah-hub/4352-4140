@@ -3,7 +3,7 @@
   <?= view('layout/sidebar_admin', ['active' => 'clients']) ?>
   <main class="main-content">
     <div class="topbar">
-      <div class="topbar-title">Détail client : <?= esc($client['telephone']) ?></div>
+      <div class="topbar-title">Detail client : <?= esc($client['telephone']) ?></div>
     </div>
     <div class="page-content">
       <?= view('layout/flash') ?>
@@ -19,13 +19,13 @@
       </div>
 
       <div class="data-card">
-        <div class="data-card-header"><h3>Historique des opérations</h3></div>
+        <div class="data-card-header"><h3>Historique des operations</h3></div>
         <?php if (empty($operations)) : ?>
-          <div class="empty-state"><i class="bi bi-inbox"></i><p>Aucune opération.</p></div>
+          <div class="empty-state"><i class="bi bi-inbox"></i><p>Aucune operation.</p></div>
         <?php else : ?>
           <table class="table-custom">
             <thead>
-              <tr><th>Type</th><th>Montant</th><th>Frais</th><th>Solde avant</th><th>Solde après</th><th>Destinataire</th><th>Date</th></tr>
+              <tr><th>Type</th><th>Montant</th><th>Frais</th><th>Solde avant</th><th>Solde apres</th><th>Destinataire</th><th>Date</th></tr>
             </thead>
             <tbody>
               <?php foreach ($operations as $op) : ?>

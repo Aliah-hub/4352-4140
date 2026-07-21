@@ -3,7 +3,7 @@
   <?= view('layout/sidebar_client', ['active' => 'historique']) ?>
   <main class="main-content">
     <div class="topbar">
-      <div class="topbar-title">Historique des opérations</div>
+      <div class="topbar-title">Historique des operations</div>
     </div>
     <div class="page-content">
       <?= view('layout/flash') ?>
@@ -16,7 +16,7 @@
         <?php if (empty($operations)) : ?>
           <div class="empty-state">
             <i class="bi bi-inbox"></i>
-            <p>Aucune opération pour le moment.</p>
+            <p>Aucune operation pour le moment.</p>
           </div>
         <?php else : ?>
           <table class="table-custom">
@@ -28,20 +28,20 @@
                 <th>Frais</th>
                 <th>Solde avant</th>
                 <th>Solde après</th>
-                <th>Détails</th>
+                <th>Details</th>
                 <th>Date</th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($operations as $op) : ?>
                 <?php
-                  $isReception = isset($op['description']) && strpos($op['description'], 'Réception de') === 0;
+                  $isReception = isset($op['description']) && strpos($op['description'], 'Reception de') === 0;
                 ?>
                 <tr>
                   <td class="td-muted"><?= (int) $op['id'] ?></td>
                   <td>
                     <?php if ($isReception) : ?>
-                      <span class="badge-type badge-reception"><i class="bi bi-arrow-down-circle-fill"></i> Réception</span>
+                      <span class="badge-type badge-reception"><i class="bi bi-arrow-down-circle-fill"></i> Reception</span>
                     <?php else : ?>
                       <span class="badge-type"><?= esc($op['type_libelle']) ?></span>
                     <?php endif; ?>

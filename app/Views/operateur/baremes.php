@@ -1,9 +1,9 @@
-<?= view('layout/header', ['title' => 'Barèmes — ' . esc($type['libelle'])]) ?>
+<?= view('layout/header', ['title' => 'Baremes — ' . esc($type['libelle'])]) ?>
 <div class="app-wrapper">
   <?= view('layout/sidebar_admin', ['active' => 'types']) ?>
   <main class="main-content">
     <div class="topbar">
-      <div class="topbar-title">Barèmes : <?= esc($type['libelle']) ?></div>
+      <div class="topbar-title">Baremes : <?= esc($type['libelle']) ?></div>
     </div>
     <div class="page-content">
       <?= view('layout/flash') ?>
@@ -36,7 +36,7 @@
       </div>
 
       <div class="data-card">
-        <div class="data-card-header"><h3>Tranches configurées</h3></div>
+        <div class="data-card-header"><h3>Tranches configurees</h3></div>
         <?php if (empty($baremes)) : ?>
           <div class="empty-state"><i class="bi bi-table"></i><p>Aucune tranche.</p></div>
         <?php else : ?>

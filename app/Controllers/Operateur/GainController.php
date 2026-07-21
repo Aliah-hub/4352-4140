@@ -21,7 +21,6 @@ class GainController extends BaseController
             $frais = (float) $op['frais'];
             $libelle = $op['type_libelle'];
 
-            // Cumul par type
             if (!isset($gainsParTypeMap[$libelle])) {
                 $gainsParTypeMap[$libelle] = ['libelle' => $libelle, 'nb' => 0, 'total_frais' => 0];
             }
@@ -29,9 +28,8 @@ class GainController extends BaseController
             $gainsParTypeMap[$libelle]['total_frais'] += $frais;
             $gainTotal += $frais;
 
-            // Interne vs Externe
             if ($frais > 0) {
-                if (strpos($op['description'], 'Inter-opérateur') !== false) {
+                if (strpos($op['description'], 'Inter-operateur') !== false) {
                     $gainsExterne += $frais;
                 } else {
                     $gainsInterne += $frais;

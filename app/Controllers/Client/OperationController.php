@@ -21,7 +21,7 @@ class OperationController extends BaseController
         $client      = $clientModel->find($clientId);
 
         if ($client === null) {
-            return redirect()->to('/logout')->with('error', 'Votre session a expiré.');
+            return redirect()->to('/logout')->with('error', 'Votre session a expire.');
         }
 
         $typeParam = (string) $this->request->getGet('type');
@@ -42,21 +42,21 @@ class OperationController extends BaseController
         $inclure_frais_retrait = (bool) $this->request->getPost('inclure_frais_retrait');
 
         if ($montant_initial <= 0) {
-            return redirect()->back()->with('error', 'Le montant doit être supérieur à 0.');
+            return redirect()->back()->with('error', 'Le montant doit etre superieur a 0.');
         }
 
         $typeModel = new TypeOperationModel();
         $type = $typeModel->findByCode($typeCode);
 
         if ($type === null) {
-            return redirect()->back()->with('error', 'Type d\'opération invalide.');
+            return redirect()->back()->with('error', 'Type d\'operation invalide.');
         }
 
         $clientModel = new ClientModel();
         $client = $clientModel->find($clientId);
 
         if ($client === null) {
-            return redirect()->to('/logout')->with('error', 'Votre session a expiré.');
+            return redirect()->to('/logout')->with('error', 'Votre session a expire.');
         }
 
         $baremeModel = new BaremeModel();
@@ -93,7 +93,7 @@ class OperationController extends BaseController
                 'created_at'        => date('Y-m-d H:i:s'),
             ]);
 
-            $message = 'Opération effectuée. Nouveau solde : ' . number_format($soldeApres, 0, ',', ' ') . ' Ar.';
+            $message = 'Operation effectuee. Nouveau solde : ' . number_format($soldeApres, 0, ',', ' ') . ' Ar.';
             if ($frais > 0) $message .= ' (Frais : ' . number_format($frais, 0, ',', ' ') . ' Ar)';
             return redirect()->to('/client/dashboard')->with('success', $message);
         }
@@ -107,7 +107,7 @@ class OperationController extends BaseController
             }
 
             if (count($destinataires) === 0) {
-                return redirect()->back()->with('error', 'Le numéro du destinataire est obligatoire.');
+                return redirect()->back()->with('error', 'Le numero du destinataire est obligatoire.');
             }
 
             $montant_par_destinataire = floor($montant_initial / count($destinataires));
@@ -128,10 +128,10 @@ class OperationController extends BaseController
 
             foreach ($destinataires as $dest) {
                 if (! $prefixeModel->estValide($dest)) {
-                    return redirect()->back()->with('error', "Numéro destinataire invalide : $dest");
+                    return redirect()->back()->with('error', "Numero destinataire invalide : $dest");
                 }
                 if ($dest === $client['telephone']) {
-                    return redirect()->back()->with('error', 'Vous ne pouvez pas vous transférer à vous-même.');
+                    return redirect()->back()->with('error', 'Vous ne pouvez pas vous transferer a vous-même.');
                 }
                 
                 $cleanTelDest = str_replace('+261', '0', $dest);
@@ -190,7 +190,7 @@ class OperationController extends BaseController
                     'solde_avant'       => $soldeDestAvant,
                     'solde_apres'       => $soldeDestApres,
                     'destinataire'      => $client['telephone'],
-                    'description'       => 'Réception de ' . $client['telephone'] . ' — ' . number_format($op_data['montant_recu'], 0, ',', ' ') . ' Ar',
+                    'description'       => 'Reception de ' . $client['telephone'] . ' — ' . number_format($op_data['montant_recu'], 0, ',', ' ') . ' Ar',
                     'created_at'        => date('Y-m-d H:i:s'),
                 ]);
                 
@@ -203,7 +203,7 @@ class OperationController extends BaseController
                     'solde_avant'       => $soldeActuel,
                     'solde_apres'       => $soldeApres,
                     'destinataire'      => $op_data['dest'],
-                    'description'       => 'Transfert vers ' . $op_data['dest'] . ($op_data['is_inter'] ? ' (Inter-opérateur)' : ''),
+                    'description'       => 'Transfert vers ' . $op_data['dest'] . ($op_data['is_inter'] ? ' (Inter-operateur)' : ''),
                     'created_at'        => date('Y-m-d H:i:s'),
                 ]);
                 
@@ -212,10 +212,10 @@ class OperationController extends BaseController
             
             $clientModel->mettreAJourSolde($clientId, $soldeActuel);
             
-            return redirect()->to('/client/dashboard')->with('success', 'Transfert(s) effectué(s) avec succès. Nouveau solde : ' . number_format($soldeActuel, 0, ',', ' ') . ' Ar.');
+            return redirect()->to('/client/dashboard')->with('success', 'Transfert(s) effectue(s) avec succès. Nouveau solde : ' . number_format($soldeActuel, 0, ',', ' ') . ' Ar.');
         }
 
-        return redirect()->back()->with('error', 'Type d\'opération non reconnu.');
+        return redirect()->back()->with('error', 'Type d\'operation non reconnu.');
     }
 
     public function historique()
@@ -228,7 +228,7 @@ class OperationController extends BaseController
         $client     = $clientModel->find($clientId);
 
         if ($client === null) {
-            return redirect()->to('/logout')->with('error', 'Votre session a expiré.');
+            return redirect()->to('/logout')->with('error', 'Votre session a expire.');
         }
 
         return view('client/historique', [

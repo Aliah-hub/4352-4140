@@ -6,7 +6,6 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-// Filtre pour protéger les pages de l'espace client
 class AuthFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)

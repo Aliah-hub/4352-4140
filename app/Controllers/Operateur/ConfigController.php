@@ -23,6 +23,6 @@ class ConfigController extends BaseController
 
         $configModel->update($id, ['valeur' => $valeur]);
 
-        return redirect()->to('/operateur/config')->with('success', 'Configuration mise à jour avec succès.');
+        return redirect()->to('/operateur/config')->with('success', 'Configuration mise a jour avec succes.');
     }
 }

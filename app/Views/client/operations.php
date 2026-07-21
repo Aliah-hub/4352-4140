@@ -1,9 +1,9 @@
-<?= view('layout/header', ['title' => 'Faire une opération']) ?>
+<?= view('layout/header', ['title' => 'Faire une operation']) ?>
 <div class="app-wrapper">
   <?= view('layout/sidebar_client', ['active' => 'operations']) ?>
   <main class="main-content">
     <div class="topbar">
-      <div class="topbar-title">Faire une opération</div>
+      <div class="topbar-title">Faire une operation</div>
     </div>
     <div class="page-content">
       <?= view('layout/flash') ?>
@@ -17,7 +17,7 @@
           <?= csrf_field() ?>
 
           <div class="form-group">
-            <label>Type d'opération</label>
+            <label>Type d'operation</label>
             <div class="type-buttons">
               <?php foreach ($types as $t) : ?>
                 <label class="type-choice">
@@ -46,17 +46,17 @@
           </div>
 
           <div class="form-group d-none" id="groupe-destinataire">
-            <label>Numéro(s) du destinataire (séparés par une virgule pour envoi multiple)</label>
+            <label>Numero(s) du destinataire (separes par une virgule pour envoi multiple)</label>
             <input type="text" name="destinataire" id="destinataire"
                    placeholder="ex: 0341234567, 0329876543" class="form-control" />
           </div>
 
           <div class="form-group d-none" id="groupe-frais-retrait" style="flex-direction: row; align-items: center; gap: 10px;">
             <input type="checkbox" name="inclure_frais_retrait" id="inclure_frais_retrait" value="1" style="width: 20px; height: 20px;" />
-            <label for="inclure_frais_retrait" style="margin-bottom: 0; text-transform: none; color: var(--text-main);">Inclure les frais de retrait (le montant sera augmenté pour couvrir les frais de retrait du destinataire)</label>
+            <label for="inclure_frais_retrait" style="margin-bottom: 0; text-transform: none; color: var(--text-main);">Inclure les frais de retrait (le montant sera augmente pour couvrir les frais de retrait du destinataire)</label>
           </div>
 
-          <button type="submit" class="btn-primary-custom">Confirmer l'opération</button>
+          <button type="submit" class="btn-primary-custom">Confirmer l'operation</button>
         </form>
       </div>
 

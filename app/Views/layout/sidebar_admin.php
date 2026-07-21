@@ -1,14 +1,14 @@
 <?php
 $nav = isset($active) ? $active : '';
 $initiale = 'O';
-$displayNom = 'Opérateur';
+$displayNom = 'Operateur';
 ?>
 <aside class="sidebar">
-  <div class="sidebar-logo">Opéra<span>teur</span></div>
-  <div class="sidebar-section">Opérateur</div>
+  <div class="sidebar-logo">Opera<span>teur</span></div>
+  <div class="sidebar-section">Operateur</div>
   <ul class="sidebar-nav">
     <li><a href="<?= base_url('operateur/dashboard') ?>" class="<?= $nav === 'dashboard' ? 'active' : '' ?>"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
-    <li><a href="<?= base_url('operateur/prefixes') ?>" class="<?= $nav === 'prefixes' ? 'active' : '' ?>"><i class="bi bi-hash"></i> Préfixes</a></li>
+    <li><a href="<?= base_url('operateur/prefixes') ?>" class="<?= $nav === 'prefixes' ? 'active' : '' ?>"><i class="bi bi-hash"></i> Prefixes</a></li>
     <li><a href="<?= base_url('operateur/type-operations') ?>" class="<?= $nav === 'types' ? 'active' : '' ?>"><i class="bi bi-sliders"></i> Types & Barèmes</a></li>
     <li><a href="<?= base_url('operateur/gains') ?>" class="<?= $nav === 'gains' ? 'active' : '' ?>"><i class="bi bi-graph-up-arrow"></i> Gains & Commissions</a></li>
     <li><a href="<?= base_url('operateur/config') ?>" class="<?= $nav === 'config' ? 'active' : '' ?>"><i class="bi bi-gear"></i> Configuration</a></li>
@@ -20,11 +20,11 @@ $displayNom = 'Opérateur';
       <div class="avatar"><?= esc($initiale) ?></div>
       <div class="user-info">
         <div class="name"><?= esc($displayNom) ?></div>
-        <div class="role">Opérateur</div>
+        <div class="role">Operateur</div>
       </div>
     </div>
     <a href="<?= base_url('logout') ?>" class="logout-link">
-      <i class="bi bi-box-arrow-right"></i> Déconnexion
+      <i class="bi bi-box-arrow-right"></i> Deconnexion
     </a>
   </div>
 </aside>

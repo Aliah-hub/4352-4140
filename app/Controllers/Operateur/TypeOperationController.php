@@ -30,19 +30,19 @@ class TypeOperationController extends BaseController
         $libelle = trim((string) $this->request->getPost('libelle'));
 
         if ($code === '' || $libelle === '') {
-            return redirect()->back()->with('error', 'Code et libellé sont obligatoires.');
+            return redirect()->back()->with('error', 'Code et libelle sont obligatoires.');
         }
 
         $typeModel = new TypeOperationModel();
 
         $existant = $typeModel->where('code', $code)->first();
         if ($existant !== null) {
-            return redirect()->back()->with('error', 'Ce code existe déjà.');
+            return redirect()->back()->with('error', 'Ce code existe deja.');
         }
 
         $typeModel->insert(['code' => $code, 'libelle' => $libelle, 'actif' => 1]);
 
-        return redirect()->to('/operateur/type-operations')->with('success', 'Type d\'opération créé.');
+        return redirect()->to('/operateur/type-operations')->with('success', 'Type d\'operation cree.');
     }
 
     public function delete(int $id)
@@ -50,7 +50,7 @@ class TypeOperationController extends BaseController
         $typeModel = new TypeOperationModel();
         $typeModel->delete($id);
 
-        return redirect()->to('/operateur/type-operations')->with('success', 'Type supprimé.');
+        return redirect()->to('/operateur/type-operations')->with('success', 'Type supprime.');
     }
 
     public function baremes(int $typeId)
@@ -91,7 +91,7 @@ class TypeOperationController extends BaseController
         ]);
 
         return redirect()->to('/operateur/type-operations/' . $typeId . '/baremes')
-                         ->with('success', 'Tranche ajoutée.');
+                         ->with('success', 'Tranche ajoutee.');
     }
 
     public function updateBareme(int $typeId, int $baremeId)
@@ -108,7 +108,7 @@ class TypeOperationController extends BaseController
         ]);
 
         return redirect()->to('/operateur/type-operations/' . $typeId . '/baremes')
-                         ->with('success', 'Tranche modifiée.');
+                         ->with('success', 'Tranche modifiee.');
     }
 
     public function deleteBareme(int $typeId, int $baremeId)
@@ -117,6 +117,6 @@ class TypeOperationController extends BaseController
         $baremeModel->delete($baremeId);
 
         return redirect()->to('/operateur/type-operations/' . $typeId . '/baremes')
-                         ->with('success', 'Tranche supprimée.');
+                         ->with('success', 'Tranche supprimee.');
     }
 }

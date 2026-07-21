@@ -3,7 +3,7 @@
   <?= view('layout/sidebar_admin', ['active' => 'types']) ?>
   <main class="main-content">
     <div class="topbar">
-      <div class="topbar-title">Types d'operations & Barèmes</div>
+      <div class="topbar-title">Types d'operations & Baremes</div>
     </div>
     <div class="page-content">
       <?= view('layout/flash') ?>
@@ -26,7 +26,7 @@
             <h3><?= esc($t['libelle']) ?> <small class="td-muted">(<?= esc($t['code']) ?>)</small></h3>
             <div>
               <a href="<?= base_url('operateur/type-operations/' . (int) $t['id'] . '/baremes') ?>"
-                 class="btn-secondary-custom"><i class="bi bi-table"></i> Gérer les barèmes</a>
+                 class="btn-secondary-custom"><i class="bi bi-table"></i> Gerer les baremes</a>
               <form action="<?= base_url('operateur/type-operations/delete/' . (int) $t['id']) ?>" method="post"
                     class="d-inline" onsubmit="return confirm('Supprimer ce type ?')">
                 <?= csrf_field() ?>
@@ -36,7 +36,7 @@
           </div>
 
           <?php if (empty($t['baremes'])) : ?>
-            <p class="td-muted" style="padding: 16px 24px; font-size: 0.9rem;">Aucun barème configuré pour ce type d'opération.</p>
+            <p class="td-muted" style="padding: 16px 24px; font-size: 0.9rem;">Aucun bareme configure pour ce type d'operation.</p>
           <?php else : ?>
             <table class="table-custom">
               <thead><tr>

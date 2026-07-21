@@ -22,14 +22,14 @@ class PrefixeController extends BaseController
         $valeur = trim((string) $this->request->getPost('valeur'));
 
         if ($valeur === '') {
-            return redirect()->back()->with('error', 'La valeur du préfixe est obligatoire.');
+            return redirect()->back()->with('error', 'La valeur du prefixe est obligatoire.');
         }
 
         $prefixeModel = new PrefixeModel();
 
         $existant = $prefixeModel->where('valeur', $valeur)->first();
         if ($existant !== null) {
-            return redirect()->back()->with('error', 'Ce préfixe existe déjà.');
+            return redirect()->back()->with('error', 'Ce prefixe existe deja.');
         }
 
         $prefixeModel->insert([
@@ -38,7 +38,7 @@ class PrefixeController extends BaseController
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
-        return redirect()->to('/operateur/prefixes')->with('success', 'Préfixe ajouté.');
+        return redirect()->to('/operateur/prefixes')->with('success', 'Prefixe ajoute.');
     }
 
     public function toggleActif(int $id)
@@ -47,13 +47,13 @@ class PrefixeController extends BaseController
         $prefixe = $prefixeModel->find($id);
 
         if ($prefixe === null) {
-            return redirect()->back()->with('error', 'Préfixe introuvable.');
+            return redirect()->back()->with('error', 'Prefixe introuvable.');
         }
 
         $nouvelEtat = ($prefixe['actif'] == 1) ? 0 : 1;
         $prefixeModel->update($id, ['actif' => $nouvelEtat]);
 
-        return redirect()->to('/operateur/prefixes')->with('success', 'Statut mis à jour.');
+        return redirect()->to('/operateur/prefixes')->with('success', 'Statut mis a jour.');
     }
 
     public function delete(int $id)
@@ -61,6 +61,6 @@ class PrefixeController extends BaseController
         $prefixeModel = new PrefixeModel();
         $prefixeModel->delete($id);
 
-        return redirect()->to('/operateur/prefixes')->with('success', 'Préfixe supprimé.');
+        return redirect()->to('/operateur/prefixes')->with('success', 'Prefixe supprime.');
     }
 }

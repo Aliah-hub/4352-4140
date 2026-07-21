@@ -3,14 +3,14 @@
   <?= view('layout/sidebar_admin', ['active' => 'config']) ?>
   <main class="main-content">
     <div class="topbar">
-      <div class="topbar-title">Configuration Système</div>
+      <div class="topbar-title">Configuration Systeme</div>
     </div>
     <div class="page-content">
       <?= view('layout/flash') ?>
 
       <div class="data-card">
         <div class="data-card-header">
-          <h3>Paramètres globaux</h3>
+          <h3>Parametres globaux</h3>
         </div>
         <div style="padding: 24px;">
           <?php foreach ($configs as $c) : ?>

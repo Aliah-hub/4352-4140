@@ -1,15 +1,15 @@
-<?= view('layout/header', ['title' => 'Préfixes']) ?>
+<?= view('layout/header', ['title' => 'Prefixes']) ?>
 <div class="app-wrapper">
   <?= view('layout/sidebar_admin', ['active' => 'prefixes']) ?>
   <main class="main-content">
     <div class="topbar">
-      <div class="topbar-title">Gestion des préfixes</div>
+      <div class="topbar-title">Gestion des prefixes</div>
     </div>
     <div class="page-content">
       <?= view('layout/flash') ?>
 
       <div class="data-card">
-        <div class="data-card-header"><h3>Ajouter un préfixe</h3></div>
+        <div class="data-card-header"><h3>Ajouter un prefixe</h3></div>
         <form action="<?= base_url('operateur/prefixes/store') ?>" method="post" class="form-inline-row">
           <?= csrf_field() ?>
           <input type="text" name="valeur" placeholder="ex: 032, +261, 0202"
@@ -19,12 +19,12 @@
       </div>
 
       <div class="data-card">
-        <div class="data-card-header"><h3>Préfixes configurés</h3></div>
+        <div class="data-card-header"><h3>Prefixes configures</h3></div>
         <?php if (empty($prefixes)) : ?>
-          <div class="empty-state"><i class="bi bi-hash"></i><p>Aucun préfixe configuré.</p></div>
+          <div class="empty-state"><i class="bi bi-hash"></i><p>Aucun prefixe configure.</p></div>
         <?php else : ?>
           <table class="table-custom">
-            <thead><tr><th>Préfixe</th><th>Statut</th><th>Actions</th></tr></thead>
+            <thead><tr><th>Prefixe</th><th>Statut</th><th>Actions</th></tr></thead>
             <tbody>
               <?php foreach ($prefixes as $p) : ?>
                 <tr>
@@ -40,11 +40,11 @@
                     <form action="<?= base_url('operateur/prefixes/toggle/' . (int) $p['id']) ?>" method="post" class="d-inline">
                       <?= csrf_field() ?>
                       <button type="submit" class="btn-sm-custom btn-confirm">
-                        <?= $p['actif'] ? 'Désactiver' : 'Activer' ?>
+                        <?= $p['actif'] ? 'Desactiver' : 'Activer' ?>
                       </button>
                     </form>
                     <form action="<?= base_url('operateur/prefixes/delete/' . (int) $p['id']) ?>" method="post" class="d-inline"
-                          onsubmit="return confirm('Supprimer ce préfixe ?')">
+                          onsubmit="return confirm('Supprimer ce prefixe ?')">
                       <?= csrf_field() ?>
                       <button type="submit" class="btn-sm-custom btn-danger">Supprimer</button>
                     </form>

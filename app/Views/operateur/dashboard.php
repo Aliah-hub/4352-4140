@@ -1,4 +1,4 @@
-<?= view('layout/header', ['title' => 'Dashboard Opérateur']) ?>
+<?= view('layout/header', ['title' => 'Dashboard Operateur']) ?>
 <div class="app-wrapper">
   <?= view('layout/sidebar_admin', ['active' => 'dashboard']) ?>
   <main class="main-content">
@@ -19,21 +19,21 @@
         <div class="metric-card">
           <div class="metric-icon blue"><i class="bi bi-arrow-left-right"></i></div>
           <div class="metric-value"><?= (int) $stats['total_operations'] ?></div>
-          <div class="metric-label">Opérations</div>
+          <div class="metric-label">Operations</div>
         </div>
         <div class="metric-card">
           <div class="metric-icon yellow"><i class="bi bi-cash-coin"></i></div>
           <div class="metric-value"><?= number_format((float) $stats['total_gains'], 0, ',', ' ') ?> Ar</div>
-          <div class="metric-label">Gains collectés</div>
+          <div class="metric-label">Gains collectes</div>
         </div>
       </div>
 
       <div class="data-card">
         <div class="data-card-header">
-          <h3>10 dernières opérations</h3>
+          <h3>10 dernières operations</h3>
         </div>
         <?php if (empty($dernieres)) : ?>
-          <div class="empty-state"><i class="bi bi-inbox"></i><p>Aucune opération.</p></div>
+          <div class="empty-state"><i class="bi bi-inbox"></i><p>Aucune operation.</p></div>
         <?php else : ?>
           <table class="table-custom">
             <thead>

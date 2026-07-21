@@ -8,7 +8,7 @@ $initiale  = strtoupper(substr($telephone, -1));
   <div class="sidebar-section">Mon compte</div>
   <ul class="sidebar-nav">
     <li><a href="<?= base_url('client/dashboard') ?>" class="<?= $nav === 'dashboard' ? 'active' : '' ?>"><i class="bi bi-house"></i> Accueil</a></li>
-    <li><a href="<?= base_url('client/operations') ?>" class="<?= $nav === 'operations' ? 'active' : '' ?>"><i class="bi bi-send"></i> Faire une opération</a></li>
+    <li><a href="<?= base_url('client/operations') ?>" class="<?= $nav === 'operations' ? 'active' : '' ?>"><i class="bi bi-send"></i> Faire une operation</a></li>
     <li><a href="<?= base_url('client/historique') ?>" class="<?= $nav === 'historique' ? 'active' : '' ?>"><i class="bi bi-clock-history"></i> Historique</a></li>
   </ul>
 
@@ -21,7 +21,7 @@ $initiale  = strtoupper(substr($telephone, -1));
       </div>
     </div>
     <a href="<?= base_url('logout') ?>" class="logout-link">
-      <i class="bi bi-box-arrow-right"></i> Déconnexion
+      <i class="bi bi-box-arrow-right"></i> Deconnexion
     </a>
   </div>
 </aside>

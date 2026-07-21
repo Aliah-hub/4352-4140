@@ -17,7 +17,7 @@
       <div class="actions-rapides">
         <a href="<?= base_url('client/operations') ?>?type=depot" class="action-card depot">
           <i class="bi bi-arrow-down-circle"></i>
-          <span>Dépôt</span>
+          <span>Depôt</span>
         </a>
         <a href="<?= base_url('client/operations') ?>?type=retrait" class="action-card retrait">
           <i class="bi bi-arrow-up-circle"></i>
@@ -35,13 +35,13 @@
 
       <div class="data-card">
         <div class="data-card-header">
-          <h3>Dernières opérations</h3>
+          <h3>Dernieres operations</h3>
           <a href="<?= base_url('client/historique') ?>" class="btn-secondary-custom">Tout voir</a>
         </div>
         <?php if (empty($dernieres)) : ?>
           <div class="empty-state">
             <i class="bi bi-inbox"></i>
-            <p>Aucune opération pour le moment.</p>
+            <p>Aucune operation pour le moment.</p>
           </div>
         <?php else : ?>
           <table class="table-custom">
